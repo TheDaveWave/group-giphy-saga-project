@@ -2,6 +2,8 @@
 .DS_Store
 .DS_STORE/
 
+.env
+
 # React Build Directory
 build/
 
