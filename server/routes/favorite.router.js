@@ -17,8 +17,6 @@ router.get('/', (req, res) => {
     console.log('Error in GET /api/favorite', err);
     res.sendStatus(500);
   });
-
-  res.sendStatus(200);
 });
 
 // add a new favorite
