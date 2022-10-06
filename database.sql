@@ -17,6 +17,6 @@ VALUES ('funny'), ('cohort'), ('cartoon'), ('nsfw'), ('meme');
 -- favorite table
 CREATE TABLE "favorite" (
 	"id" SERIAL PRIMARY KEY,
-	"gif_obj" VARCHAR(10000) NOT NULL,
+	"gif_obj" JSON NOT NULL,
 	"category_id" INT REFERENCES "category"
 );
