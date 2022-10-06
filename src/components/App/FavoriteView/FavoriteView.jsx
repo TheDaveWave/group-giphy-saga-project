@@ -12,7 +12,7 @@ function FavoriteView () {
             <h1>This is the Favorite View Page</h1>
             <div>
                 {favoriteGifs.map(gif => (
-                    <FavoriteGif key={gif.id}/>
+                    <FavoriteGif key={gif.id} gif={gif}/>
                 ))}
             </div>
         </section>
