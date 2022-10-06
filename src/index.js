@@ -62,6 +62,9 @@ const searchReducer = (state=[], action) => {
 }
 
 const favsReducer = (state=[], action) => {
+    if(action.type === 'SET_FAV') {
+        return action.payload;
+    }
     return state;
 }
 
