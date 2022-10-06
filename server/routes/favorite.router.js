@@ -3,9 +3,20 @@ const pool = require('../modules/pool');
 
 const router = express.Router();
 
-// return all favorite images
+// return all favorite images /api/favorite
 router.get('/', (req, res) => {
-  res.sendStatus(200);
+
+  // query text for getting data from data base table.
+  const queryText = `SELECT * FROM "favorite" ORDER BY "id";`;
+  pool.query(queryText)
+  .then(response => {
+    console.log(response.data);
+    res.send(response.data);
+  })
+  .catch(err => {
+    console.log('Error in GET /api/favorite', err);
+    res.sendStatus(500);
+  });
 });
 
 // add a new favorite
