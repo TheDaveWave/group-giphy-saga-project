@@ -3,7 +3,7 @@ import FavoriteGif from "./FavoriteGif/FavoriteGif";
 
 function FavoriteView () {
     // get the list of favorite gifs object
-    const favoriteGifs = useSelector(store => store.favReducer);
+    const favoriteGifs = useSelector(store => store.favs);
 
 
 

@@ -31,7 +31,14 @@ function* getGifsSaga(){
 }
 
 function* getFavsSaga(){
-    // GET request to '/api/favorite'
+    try {
+        // GET request to '/api/favorite'
+        const response = yield axios.get('/api/favorite');
+        // storing the response in the FavsReducers:
+        yield put({type: 'SET_FAV', payload: response.data});
+    } catch (err) {
+        console.log('Error getting favorite Gifs', err);
+    }
 }
 
 
