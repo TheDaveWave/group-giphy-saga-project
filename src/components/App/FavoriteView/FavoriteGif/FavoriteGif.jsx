@@ -15,7 +15,7 @@ function FavoriteGif({gif}) {
     const updateCategory = () => {
         // find the category id in categories that matches the categoryid
         const categoryObj = categories.find(cat => cat.id === categoryid);
-        console.log(categoryObj);
+        console.log('Change to category:',categoryObj);
         dispatch({
             type: 'CHANGE_CAT',
             payload: categoryObj
