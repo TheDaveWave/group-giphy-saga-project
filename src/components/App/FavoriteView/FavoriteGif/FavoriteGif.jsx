@@ -15,7 +15,9 @@ function FavoriteGif({gif}) {
         <section>
             <h1>This is a favorited gif</h1>
             {/* display gif properties here */}
-
+            <select>
+                
+            </select>
             <button onClick={() => removeFav()}>Remove</button>
         </section>
     );
