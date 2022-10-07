@@ -7,8 +7,6 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { put, takeEvery} from "redux-saga/effects";
-import registerServiceWorker from './registerServiceWorker';
-import createSagaMiddleware from 'redux-saga';
 
 
 
