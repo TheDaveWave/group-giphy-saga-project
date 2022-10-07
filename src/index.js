@@ -79,9 +79,14 @@ function* addFavSaga(action){
 
 }
 
-function* changeCatSaga(){
+function* changeCatSaga(action){
     // PUT request to '/api/favorite/:favid
-
+    try {
+        yield axios.put(`/api/favorite/${action.payload.favid}`, {catId: action.payload.catid});
+        yield put({type: 'GET_FAVS'});
+    } catch (err) {
+        console.log('Error changing category', err);
+    }
 }
 
 function* deleteFavSaga(){
