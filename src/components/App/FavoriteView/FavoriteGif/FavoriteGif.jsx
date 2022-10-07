@@ -13,7 +13,7 @@ function FavoriteGif({gif}) {
 
     // change the category of the gif.
     const updateCategory = () => {
-        // find the category in categories that matches the category value id
+        // find the category id in categories that matches the categoryid
         const categoryObj = categories.find(cat => cat.id === categoryid);
         console.log(categoryObj);
         dispatch({
