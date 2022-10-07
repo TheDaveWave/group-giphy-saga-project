@@ -9,14 +9,14 @@ router.get('/', (req, res) => {
   // query text for getting data from data base table.
   const queryText = `SELECT * FROM "favorite" ORDER BY "id";`;
   pool.query(queryText)
-    .then(response => {
-      console.log(response.data);
-      res.send(response.rows);
-    })
-    .catch(err => {
-      console.log('Error in GET /api/favorite', err);
-      res.sendStatus(500);
-    });
+  .then(response => {
+    console.log(response.rows);
+    res.send(response.rows);
+  })
+  .catch(err => {
+    console.log('Error in GET /api/favorite', err);
+    res.sendStatus(500);
+  });
 });
 
 // add a new favorite
