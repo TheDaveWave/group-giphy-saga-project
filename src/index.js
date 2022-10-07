@@ -25,8 +25,19 @@ function* rootSaga(){
     yield takeEvery("GET_CATEGORY", getCategoriesSaga);
 }
 
-function* getGifsSaga(){
-    // GET request to '/api/search'
+function* getGifsSaga(action){
+    // GET request to '/api/search/:searchTerm'
+    try {
+        let response = yield axios({
+            method: 'GET',
+            url: `/api/search/${action.payload}`
+        })
+        console.log(response.data);
+        yield put({type: 'SET_GIFLIST', payload: response.data});
+    } catch(error){
+        console.log('Error in getting gifs,', error);
+    }
+    
 }
 
 function* getFavsSaga(){
@@ -76,7 +87,11 @@ const sagaMiddleware = createSagaMiddleware();
 // ~~~~~~~~~~~~~ REDUX REDUCERS ~~~~~~~~~~
 
 const searchReducer = (state=[], action) => {
+    if(action.type === 'SET_GIFLIST'){
+        return action.payload;
+    }
     return state;
+    
 }
 
 const favsReducer = (state=[], action) => {

@@ -21,18 +21,46 @@ router.get('/', (req, res) => {
 
 // add a new favorite
 router.post('/', (req, res) => {
-  res.sendStatus(200);
+  let addFavorite = req.body;
+  console.log(`Adding favorite`, addFavorite);
+
+  let queryText = `INSERT INTO "favorite" ("gif_obj", "category_id")
+                   VALUES ($1, $2);`;
+  pool.query(queryText, [addFavorite.gif_obj, addFavorite.category_id])
+    .then(result => {
+      res.sendStatus(201);
+    })
+    .catch(error => {
+      console.log(`Error adding new favorite`, error);
+      res.sendStatus(500);
+    });
 });
 
 // update given favorite with a category id
 router.put('/:favId', (req, res) => {
   // req.body should contain a category_id to add to this favorite image
-  res.sendStatus(200);
+  console.log(req.params);
+  const favId = req.params.favId;
+  const catId = req.body.catId;
+
+  const queryText = `UPDATE "favorite" SET "category_id"= $1 WHERE id=$2 RETURNING *;`;
+  pool.query(queryText, [catId, favId])
+  .then((result) => res.send(result.rows))
+  .catch(err => {
+    console.log(`Error in PUT`, err);
+    res.sendStatus(500);
+  });
 });
 
 // delete a favorite
-router.delete('/', (req, res) => {
-  res.sendStatus(200);
+router.delete('/:favId', (req, res) => {
+  let queryText = 'DELETE FROM "favorite" WHERE id=$1';
+  pool.query(queryText, [req.params.favId])
+  .then(()=> res.sendStatus(200))
+  .catch(error => {
+    console.log('error deleting favorite', error);
+    res.sendStatus(500);
+  })
 });
 
 module.exports = router;
