@@ -15,6 +15,8 @@ function FavoriteGif({gif}) {
         });
     }
 
+    console.log(gif.id);
+
     return (
         <section>
             <h1>This is a favorited gif</h1>
@@ -22,6 +24,7 @@ function FavoriteGif({gif}) {
             <select>
 
             </select>
+            <button>TEST</button>
             <button onClick={() => removeFav()}>Remove</button>
         </section>
     );

@@ -34,6 +34,8 @@ function* getFavsSaga(){
         // GET request to '/api/favorite'
         const response = yield axios.get('/api/favorite');
         // storing the response in the FavsReducers:
+        // console.log(response.data[0].gif_obj.url)
+        // console.log(JSON.parse(response.data.gif_obj));
         yield put({type: 'SET_FAV', payload: response.data});
     } catch (err) {
         console.log('Error getting favorite Gifs', err);
@@ -79,14 +81,14 @@ const searchReducer = (state=[], action) => {
 
 const favsReducer = (state=[], action) => {
     if(action.type === 'SET_FAV') {
-        return [...state, action.payload];
+        return action.payload;
     }
     return state;
 }
 
 const categoryReducer = (state = [], action) => {
     if(action.type === 'SET_CATEGORY') {
-        return [...state, action.payload];
+        return action.payload;
     }
     return state;
 }

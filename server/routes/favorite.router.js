@@ -10,8 +10,8 @@ router.get('/', (req, res) => {
   const queryText = `SELECT * FROM "favorite" ORDER BY "id";`;
   pool.query(queryText)
   .then(response => {
-    console.log(response.data);
-    res.send(response.data);
+    console.log(response.rows);
+    res.send(response.rows);
   })
   .catch(err => {
     console.log('Error in GET /api/favorite', err);
