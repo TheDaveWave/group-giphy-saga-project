@@ -8,8 +8,11 @@ function FavoriteView () {
 
     const dispatch = useDispatch();
 
+    // on load fetch favorites and categories.
     useEffect(() => {
         dispatch({type: 'GET_FAVS'});
+        // this dispatch is for loading the categories before the 
+        // FavoriteGif component loads.
         dispatch({type: 'GET_CATEGORY'});
     }, []);
 
