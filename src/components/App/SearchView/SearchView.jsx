@@ -31,14 +31,9 @@ function SearchView(){
                 <button onClick={()=>fetchGifList()}>Search</button>
             </div>
             <div>
-                <ul id="gif-ul">
                     {searchList.map((gifObj, index)=>{
                         return <ListItem key={index} gifObj={gifObj}/>
                     })}
-
-
-                </ul>
-
             </div>
         </div>
     )

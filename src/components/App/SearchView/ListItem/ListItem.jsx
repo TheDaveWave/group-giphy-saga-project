@@ -32,10 +32,10 @@ function ListItem({gifObj}){
 
 
     return(
-        <li>
+        <div>
             <img src={gifObj.images.original.url}/>
             {isFav ? <button onClick={()=>removeFromFavs()}>❤️</button> : <button onClick={()=>addToFavs()}>♡</button>}
-        </li>
+        </div>
 
     )
 }

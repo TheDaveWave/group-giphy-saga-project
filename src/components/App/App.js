@@ -2,6 +2,7 @@ import React from 'react';
 import { HashRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 import FavoriteView from './FavoriteView/FavoriteView';
 import SearchView from './SearchView/SearchView';
+import './App.css';
 
 function App(props) {
   return (
