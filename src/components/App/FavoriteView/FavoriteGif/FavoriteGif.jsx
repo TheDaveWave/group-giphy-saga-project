@@ -50,7 +50,7 @@ function FavoriteGif({gif}) {
                     <option key={cat.id} value={cat.id}>{cat.name}</option>
                 ))}
             </select>
-            <button onClick={() => updateCategory()}>TEST</button>
+            <button onClick={() => updateCategory()}>Upate Category</button>
             <button onClick={() => removeFav()}>Remove</button>
         </section>
     );
