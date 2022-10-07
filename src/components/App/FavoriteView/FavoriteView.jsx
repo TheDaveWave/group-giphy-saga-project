@@ -1,11 +1,16 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import FavoriteGif from "./FavoriteGif/FavoriteGif";
 
 function FavoriteView () {
     // get the list of favorite gifs object
     const favoriteGifs = useSelector(store => store.favs);
 
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch({type: 'GET_FAVS'});
+    }, []);
 
     return (
         <section>
