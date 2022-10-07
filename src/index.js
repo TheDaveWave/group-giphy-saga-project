@@ -10,9 +10,6 @@ import { put, take, takeEvery} from "redux-saga/effects";
 
 
 
-
-
-
 // ~~~~~~~~~~~~ REDUX SAGAS ~~~~~~~~~~~~~~~
 
 function* rootSaga(){
@@ -64,8 +61,21 @@ function* getCategoriesSaga() {
     }
 }
 
-function* addFavSaga(){
+function* addFavSaga(action){
     // POST request to '/api/favorite'
+    let newFavorite = {
+        gif_obj: action.payload
+    }
+    try {
+        yield axios({
+            method: 'POST',
+            url: '/api/favorite',
+            data: newFavorite
+        })
+        yield put({type:'GET_FAVS'});
+    } catch(err) {
+        console.log('Error getting categories', err);
+    }
 
 }
 
@@ -96,6 +106,7 @@ const searchReducer = (state=[], action) => {
 
 const favsReducer = (state=[], action) => {
     if(action.type === 'SET_FAV') {
+        console.log('in setFav payload is', action.payload);
         return action.payload;
     }
     return state;
