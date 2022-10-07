@@ -38,7 +38,6 @@ function FavoriteGif({gif}) {
             setCategory(categories[0].id);
         }
     }, [categories]);
-    // .find()
 
     return (
         <section>
