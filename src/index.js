@@ -86,7 +86,7 @@ const favsReducer = (state=[], action) => {
 
 const categoryReducer = (state = [], action) => {
     if(action.type === 'SET_CATEGORY') {
-        return [...state ,action.payload];
+        return [...state, action.payload];
     }
     return state;
 }
