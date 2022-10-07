@@ -89,11 +89,11 @@ function* changeCatSaga(action){
     }
 }
 
-function* deleteFavSaga(){
+function* deleteFavSaga(action){
     // DELETE request to '/api/favorite
     try{
         yield axios.delete(`/api/favorite/${action.payload}`);
-        yield put({type: "DELETE_GIF"});
+        yield put({type: "GET_FAVS"});
     }catch (error) {
         console.log("Error in deleting fruit", error)
     }

@@ -28,7 +28,7 @@ function FavoriteGif({gif}) {
     // remove a favorite gif.
     const removeFav = () => {
         dispatch({
-            type: 'DELETE_GIF',
+            type: 'DELETE_FAVORITE',
             payload: gif.id
         });
     }
@@ -47,7 +47,7 @@ function FavoriteGif({gif}) {
             <div className="fav-gif-container">
                 <h1>This is a favorited gif</h1>
                 {/* display gif properties here */}
-                <img src={gif.gif_obj.url}/>
+                <img src={gif.gif_obj.images?.original.url}/>
                 <p>{categories.find(item => item.id === gif.category_id)?.name || 'none'}</p>
                 {/* the value of the select will be the id of the category object */}
                 <select className="fav-select" value={categoryid} onChange={evt => setCategory(Number(evt.target.value))} name='category'>
