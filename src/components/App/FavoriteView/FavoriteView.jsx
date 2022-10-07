@@ -6,12 +6,11 @@ function FavoriteView () {
     // get the list of favorite gifs object
     const favoriteGifs = useSelector(store => store.favs);
 
-    console.log(favoriteGifs[0]);
-
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch({type: 'GET_FAVS'});
+        dispatch({type: 'GET_CATEGORY'});
     }, []);
 
     return (
