@@ -45,6 +45,7 @@ function FavoriteGif({gif}) {
             <h1>This is a favorited gif</h1>
             {/* display gif properties here */}
             <img src={gif.gif_obj.url}/>
+            {/* the value of the select will be the id of the category object */}
             <select value={categoryid} onChange={evt => setCategory(Number(evt.target.value))} name='category'>
                 {categories.map(cat => (
                     <option key={cat.id} value={cat.id}>{cat.name}</option>
