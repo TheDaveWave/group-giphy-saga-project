@@ -43,21 +43,22 @@ function FavoriteGif({gif}) {
     }, [categories]);
 
     return (
-        <div className="fav-gif-item">
-            <div className="fav-gif-container">
-                <h1>This is a favorited gif</h1>
-                {/* display gif properties here */}
-                <img src={gif.gif_obj.images?.original.url}/>
-                <p>Category: {categories.find(item => item.id === gif.category_id)?.name || 'none'}</p>
-                {/* the value of the select will be the id of the category object */}
-                <select className="fav-select" value={categoryid} onChange={evt => setCategory(Number(evt.target.value))} name='category'>
-                    {categories.map(cat => (
-                        <option key={cat.id} value={cat.id}>{cat.name}</option>
-                    ))}
-                </select>
-                <div className="fav-btn-container">
-                    <button onClick={() => updateCategory()}>Update Category</button>
-                    <button onClick={() => removeFav()}>Remove</button>
+        <div className="container">
+            <div className="not-container">
+                <div className="content">
+                    {/* display gif properties here */}
+                    <img src={gif.gif_obj.images?.original.url}/>
+                    <p>Category: {categories.find(item => item.id === gif.category_id)?.name || 'none'}</p>
+                    {/* the value of the select will be the id of the category object */}
+                    <select className="fav-select" value={categoryid} onChange={evt => setCategory(Number(evt.target.value))} name='category'>
+                        {categories.map(cat => (
+                            <option key={cat.id} value={cat.id}>{cat.name}</option>
+                        ))}
+                    </select>
+                    <div className="fav-btn-container">
+                        <button onClick={() => updateCategory()}>Update Category</button>
+                        <button onClick={() => removeFav()}>Remove</button>
+                    </div>
                 </div>
             </div>
         </div>

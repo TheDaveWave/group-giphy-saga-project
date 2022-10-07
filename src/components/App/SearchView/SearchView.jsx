@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {useState} from 'react';
 import ListItem from './ListItem/ListItem';
+import '../App.css';
 
 
 
@@ -26,9 +27,12 @@ function SearchView(){
     return (
         <div id="search-view-window">
             <div id="search-form">
-                <h1>Search for a gif!</h1>
-                <input placeholder="Search Parameters" type="text" value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)} />
-                <button onClick={()=>fetchGifList()}>Search</button>
+                <div className='no-name'>
+                    <h1>Search for a gif!</h1>
+                    <div className='break'></div>
+                    <input placeholder="Search Parameters" type="text" value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)} />
+                    <button onClick={()=>fetchGifList()}>Search</button>
+                </div>
             </div>
             <div>
                     {searchList.map((gifObj, index)=>{
