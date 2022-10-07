@@ -40,19 +40,23 @@ function FavoriteGif({gif}) {
     }, [categories]);
 
     return (
-        <section>
-            <h1>This is a favorited gif</h1>
-            {/* display gif properties here */}
-            <img src={gif.gif_obj.url}/>
-            {/* the value of the select will be the id of the category object */}
-            <select value={categoryid} onChange={evt => setCategory(Number(evt.target.value))} name='category'>
-                {categories.map(cat => (
-                    <option key={cat.id} value={cat.id}>{cat.name}</option>
-                ))}
-            </select>
-            <button onClick={() => updateCategory()}>Update Category</button>
-            <button onClick={() => removeFav()}>Remove</button>
-        </section>
+        <div className="fav-gif-item">
+            <div className="fav-gif-container">
+                <h1>This is a favorited gif</h1>
+                {/* display gif properties here */}
+                <img src={gif.gif_obj.url}/>
+                {/* the value of the select will be the id of the category object */}
+                <select className="fav-select" value={categoryid} onChange={evt => setCategory(Number(evt.target.value))} name='category'>
+                    {categories.map(cat => (
+                        <option key={cat.id} value={cat.id}>{cat.name}</option>
+                    ))}
+                </select>
+                <div className="fav-btn-container">
+                    <button onClick={() => updateCategory()}>Update Category</button>
+                    <button onClick={() => removeFav()}>Remove</button>
+                </div>
+            </div>
+        </div>
     );
 }
 
