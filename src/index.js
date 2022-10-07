@@ -76,7 +76,12 @@ function* changeCatSaga(){
 
 function* deleteFavSaga(){
     // DELETE request to '/api/favorite
-
+    try{
+        yield axios.delete(`/api/favorite/${action.payload}`);
+        yield put({type: "DELETE_GIF"});
+    }catch (error) {
+        console.log("Error in deleting fruit", error)
+    }
 }
 
 // Create sagaMiddleware
