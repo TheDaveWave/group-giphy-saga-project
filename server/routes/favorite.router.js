@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   const queryText = `SELECT * FROM "favorite" ORDER BY "id";`;
   pool.query(queryText)
   .then(response => {
-    console.log(response.rows);
+    // console.log(response.rows);
     res.send(response.rows);
   })
   .catch(err => {
@@ -39,9 +39,10 @@ router.post('/', (req, res) => {
 // update given favorite with a category id
 router.put('/:favId', (req, res) => {
   // req.body should contain a category_id to add to this favorite image
-  console.log(req.params);
+  console.log('PUT route',req.params);
   const favId = req.params.favId;
   const catId = req.body.catId;
+  console.log('catid in PUT:', catId);
 
   const queryText = `UPDATE "favorite" SET "category_id"= $1 WHERE id=$2 RETURNING *;`;
   pool.query(queryText, [catId, favId])
